@@ -3,8 +3,11 @@
 
 #include <iostream>
 #include <thread>
+#include <mutex>
 
+std::mutex my_mutex;
 void print_func(int id) {
+	std::lock_guard<std::mutex> g(my_mutex);
 	std::cout << "Printing from threads" << id << '\n';
 }
 
